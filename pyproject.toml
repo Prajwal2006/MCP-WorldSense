@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mcp-worldsense"
+version = "0.1.0"
+description = "MCP: WorldSense - world time and weather intelligence MCP server"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "fastmcp>=0.2.0",
+  "httpx>=0.27.0",
+  "pydantic>=2.7.0",
+  "geopy>=2.4.1",
+  "timezonefinder>=6.5.2",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.2.0",
+  "pytest-asyncio>=0.23.0",
+]
+
+[project.scripts]
+worldsense-server = "worldsense.server:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+asyncio_mode = "auto"

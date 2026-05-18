@@ -1,0 +1,16 @@
+[Unit]
+Description=MCP WorldSense server
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/mcp-worldsense
+EnvironmentFile=/opt/mcp-worldsense/.env
+ExecStart=/opt/mcp-worldsense/.venv/bin/worldsense-server
+Restart=always
+RestartSec=5
+User=pi
+Group=pi
+
+[Install]
+WantedBy=multi-user.target

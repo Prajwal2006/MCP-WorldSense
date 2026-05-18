@@ -56,6 +56,7 @@ async def get_hourly_forecast(
         temperature, temp_unit = Formatter.temperature(entry["temperature"], preferences)
         feels_like, feels_unit = Formatter.temperature(entry["feels_like"], preferences)
         wind_speed, wind_unit = Formatter.wind_speed(entry["wind_speed"], preferences)
+        precipitation, precipitation_unit = Formatter.precipitation(entry["precipitation"], preferences)
         formatted.append(
             {
                 "time": entry["time"],
@@ -66,7 +67,8 @@ async def get_hourly_forecast(
                 "humidity": entry["humidity"],
                 "wind_speed": wind_speed,
                 "wind_speed_unit": wind_unit,
-                "precipitation": entry["precipitation"],
+                "precipitation": precipitation,
+                "precipitation_unit": precipitation_unit,
                 "weather_description": entry["weather_description"],
             }
         )
